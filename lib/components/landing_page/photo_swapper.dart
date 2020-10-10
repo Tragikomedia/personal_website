@@ -8,32 +8,44 @@ class PhotoSwapper extends StatefulWidget {
 
 class _PhotoSwapperState extends State<PhotoSwapper>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
+  AnimationController _controller;
+  Animation<double> _tiltingPhotoAnimation;
+  Animation<double> _movingPhotoAnimation;
+  Animation<double> _hidingPhotoAnimation;
+
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this)
+    _controller =
+        AnimationController(duration: Duration(seconds: 9), vsync: this)
           ..addListener(() {
             setState(() {});
-          })
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              Future.delayed(Duration(seconds: 2), () {
-                controller.reverse();
-              });
-            } else if (status == AnimationStatus.dismissed) {
-              Future.delayed(Duration(seconds: 2), () {
-                controller.forward();
-              });
-            }
           });
-    controller.forward();
+    _tiltingPhotoAnimation = Tween(begin: 0.0, end: 1.0)
+        .chain(TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 3),
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 1),
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.0), weight: 4)
+        ]))
+        .animate(_controller);
+    _movingPhotoAnimation = Tween(begin: 0.0, end: 1.0)
+        .chain(TweenSequence([
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.0), weight: 5),
+          TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 2),
+          TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 2)
+        ]))
+        .animate(_controller);
+    _hidingPhotoAnimation = Tween(begin: 1.0, end: 0.0).chain(TweenSequence([
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 7),
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 2)
+    ])).animate(_controller);
+    _controller.repeat();
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -41,22 +53,25 @@ class _PhotoSwapperState extends State<PhotoSwapper>
   Widget build(BuildContext context) {
     return Stack(children: [
       TiltedPhoto(
-        padding: controller.value * 20,
-        angle: controller.value * pi / 8,
+        padding: _tiltingPhotoAnimation.value * 20,
+        angle: _tiltingPhotoAnimation.value * pi / 8,
         color: Colors.yellow,
       ),
       TiltedPhoto(
-        padding: controller.value * 10,
-        angle: controller.value * pi / 16,
+        padding: _tiltingPhotoAnimation.value * 10,
+        angle: _tiltingPhotoAnimation.value * pi / 16,
         color: Colors.green,
       ),
-      ClipRect(
-        child: Container(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            widthFactor: 1 - controller.value,
-            child: PlaceholdCont(
-              color: Colors.blue,
+      Transform.translate(
+        offset: Offset(-400 * _movingPhotoAnimation.value, 0.0),
+        child: ClipRect(
+          child: Container(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              widthFactor: 1 - _hidingPhotoAnimation.value,
+              child: PlaceholdCont(
+                color: Colors.blue,
+              ),
             ),
           ),
         ),
