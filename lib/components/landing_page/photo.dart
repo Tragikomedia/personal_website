@@ -11,9 +11,16 @@ class Photo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+            border: Border.all(color: Colors.black, width: 3.0)
+      ),
       width: kDeskPhotoWidth,
       height: kDeskPhotoHeight,
-      child: Image(image: AssetImage(imageList[imageNumber]),),
+      child: Padding(
+        padding: const EdgeInsets.all(3.0),
+        child: Image(image: AssetImage(imageList[imageNumber]),),
+      ),
     );
   }
 }
