@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_test/components/landing_page/photo.dart';
+import 'package:web_test/components/landing_page/photo_swapper/photo.dart';
 import 'package:web_test/utilities/constants.dart';
 
 class FrontPhoto extends StatelessWidget {

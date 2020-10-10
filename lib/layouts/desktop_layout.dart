@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:web_test/utilities/constants.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -14,7 +13,7 @@ class DesktopLayout extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(
               maxWidth: kMaxMainPageWidth,
-              maxHeight: kMaxMainPageHeight
+              maxHeight: kMaxMainPageHeight,
           ),
           child: Container(
             width: double.infinity,

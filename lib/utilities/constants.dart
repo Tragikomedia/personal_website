@@ -5,6 +5,9 @@ const double kMaxMainPageWidth = 1200.0;
 const double kDeskPhotoWidth = 400;
 const double kDeskPhotoHeight = 550;
 
+const double kIconSize = 50.0;
+const double kIconSpacing = 20.0;
+
 const int kAnimationDuration = 5;
 const double kTiltDuration = 1;
 const double kWaitForTiltDuration = 1;

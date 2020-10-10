@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_test/components/landing_page/photo.dart';
+import 'package:web_test/components/landing_page/photo_swapper/photo.dart';
 import 'dart:math';
-
 import 'package:web_test/utilities/constants.dart';
 
 class TiltedPhoto extends StatelessWidget {

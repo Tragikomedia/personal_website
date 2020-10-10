@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_test/components/landing_page/tilted_photo.dart';
-import 'package:web_test/components/landing_page/front_photo.dart';
+import 'package:web_test/components/landing_page/photo_swapper/tilted_photo.dart';
+import 'package:web_test/components/landing_page/photo_swapper/front_photo.dart';
 import 'package:web_test/utilities/constants.dart';
 
 class PhotoSwapper extends StatefulWidget {
