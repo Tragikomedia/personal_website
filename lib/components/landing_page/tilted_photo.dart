@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:web_test/components/landing_page/photo.dart';
 import 'dart:math';
 
+import 'package:web_test/utilities/constants.dart';
+
 class TiltedPhoto extends StatelessWidget {
   TiltedPhoto(
       {Key key,
       @required this.controller,
-      @required this.imageAddress,
+      @required this.sequenceNumber,
       @required this.tiltModifier})
       : _tiltingPhotoAnimation = Tween(begin: 0.0, end: 1.0)
             .chain(TweenSequence([
-              TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 1),
-              TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: 3),
-              TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 1),
-              TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.0), weight: 4)
+              TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: kTiltDuration),
+              TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0), weight: kWaitForTiltDuration),
+              TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: kTiltDuration),
+              TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.0), weight: kAnimationDuration - 2 * kTiltDuration - kWaitForTiltDuration)
             ]))
             .animate(controller);
 
   final AnimationController controller;
   final Animation<double> _tiltingPhotoAnimation;
-  final String imageAddress;
+  final int sequenceNumber;
   final int tiltModifier;
 
   @override
@@ -30,7 +32,7 @@ class TiltedPhoto extends StatelessWidget {
         child: Transform.rotate(
             angle: _tiltingPhotoAnimation.value * pi / (16 / tiltModifier),
             child: Photo(
-              imageAddress: imageAddress,
+              sequenceNumber: sequenceNumber,
             )));
   }
 }

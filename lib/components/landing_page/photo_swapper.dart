@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_test/components/landing_page/tilted_photo.dart';
-
 import 'package:web_test/components/landing_page/front_photo.dart';
+import 'package:web_test/utilities/constants.dart';
 
 class PhotoSwapper extends StatefulWidget {
   @override
@@ -11,16 +11,24 @@ class PhotoSwapper extends StatefulWidget {
 class _PhotoSwapperState extends State<PhotoSwapper>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+  int _sequenceNumber = 0;
 
   @override
   void initState() {
     super.initState();
     _controller =
-        AnimationController(duration: Duration(seconds: 9), vsync: this)
+        AnimationController(duration: Duration(seconds: kAnimationDuration), vsync: this)
           ..addListener(() {
-            setState(() {});
-          });
-    _controller.repeat();
+            setState(() {
+            });
+          })..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              _controller.reset();
+              _sequenceNumber++;
+              _controller.forward();
+            }
+        });
+    _controller.forward();
   }
 
   @override
@@ -35,33 +43,17 @@ class _PhotoSwapperState extends State<PhotoSwapper>
       TiltedPhoto(
         controller: _controller,
         tiltModifier: 2,
-        imageAddress: 'assets/photo1.jpg',
+        sequenceNumber: _sequenceNumber + 2,
       ),
       TiltedPhoto(
         controller: _controller,
         tiltModifier: 1,
-        imageAddress: 'assets/photo2.jpg',
+        sequenceNumber: _sequenceNumber + 1,
       ),
-      FrontPhoto(controller: _controller, imageAddress: 'assets/photo3.jpg',),
+      FrontPhoto(
+        controller: _controller,
+        sequenceNumber: _sequenceNumber,
+      ),
     ]);
-  }
-}
-
-
-
-
-
-class PlaceholdCont extends StatelessWidget {
-  final Color color;
-
-  PlaceholdCont({this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      height: 550,
-      color: color,
-    );
   }
 }
