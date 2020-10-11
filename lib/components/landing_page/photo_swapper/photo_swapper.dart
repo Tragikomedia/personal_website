@@ -65,6 +65,11 @@ class _PhotoSwapperState extends State<PhotoSwapper>
           controller: _controller,
           sequenceNumber: _sequenceNumber,
         ),
+        // Container is used to prevent the movement of layout caused by padding changes
+        Container(
+          color: Colors.transparent,
+          width: kDeskPhotoWidth + 20,
+        )
       ]),
     );
   }

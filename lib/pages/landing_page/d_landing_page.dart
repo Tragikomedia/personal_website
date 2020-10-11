@@ -31,7 +31,7 @@ class DesktopLandingPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               NameWidget(),
-              FamousQuote(),
+              //FamousQuote(),
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: 350),
                 child: Column(
