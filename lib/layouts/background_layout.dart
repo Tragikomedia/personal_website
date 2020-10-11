@@ -12,11 +12,12 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-              gradient:
-                  LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
+      body: Container(
+        height: double.infinity,
+        decoration: BoxDecoration(
+            gradient:
+                LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
+        child: SingleChildScrollView(
           child: LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth > 1010) {
