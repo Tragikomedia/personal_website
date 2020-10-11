@@ -12,6 +12,9 @@ const double kIconSpacing = 20.0;
 
 const double kDeskNameSize = 80;
 
+const double kDeskButtonHeight = 75;
+const double kDeskButtonWidth = 250;
+
 const Color kDefaultButtonColor = Color(0xFF000000);
 const Color kAnimatedButtonColor1 = Color(0xFF004E92);
 const Color kAnimatedButtonColor2 = Color(0xFF000868);

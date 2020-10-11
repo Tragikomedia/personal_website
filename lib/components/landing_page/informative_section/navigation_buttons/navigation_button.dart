@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_test/components/reusable/formatted_text.dart';
+import 'package:web_test/components/reusable/button_text.dart';
 import 'package:web_test/utilities/constants.dart';
 
 class NavigationButton extends StatefulWidget {
@@ -27,6 +27,12 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _colorAnimation,
@@ -44,10 +50,10 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
           shadowColor: _colorAnimation.value,
           color: _colorAnimation.value,
           child: Container(
-            height: 75,
-            width: 250,
+            height: kDeskButtonHeight,
+            width: kDeskButtonWidth,
             child: Center(
-              child: FormattedText(
+              child: ButtonText(
                 text: widget.text,
                 color: Colors.white,
                 size: 25.0,
