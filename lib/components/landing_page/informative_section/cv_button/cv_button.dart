@@ -23,7 +23,7 @@ class _CvButtonState extends State<CvButton>
             setState(() {});
           });
     _backgroundAnimation =
-        ColorTween(begin: Colors.transparent, end: kAnimatedButtonColor1)
+        ColorTween(begin: Colors.transparent, end: Color(0xFFCDE9F1))
             .animate(_controller);
     _borderAnimation1 = ColorTween(begin: Colors.black, end: Colors.transparent)
         .animate(_controller);
@@ -40,31 +40,34 @@ class _CvButtonState extends State<CvButton>
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        await launch(
-            'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf');
-      },
-      onHover: (value) {
-        if (value) {
-          _controller.repeat(reverse: true);
-        } else {
-          _controller.reset();
-        }
-      },
-      child: Container(
-        height: kDeskButtonHeight,
-        width: kDeskButtonWidth,
-        decoration: BoxDecoration(
-            color: _backgroundAnimation.value,
-            border: Border.symmetric(
-                horizontal:
-                    BorderSide(color: _borderAnimation1.value, width: 2.0),
-                vertical:
-                    BorderSide(color: _borderAnimation2.value, width: 2.0))),
-        child: Center(
-          child: ButtonText(
-            text: 'Download CV',
+    return Semantics(
+      button: true,
+      child: InkWell(
+        onTap: () async {
+          await launch(
+              'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf');
+        },
+        onHover: (value) {
+          if (value) {
+            _controller.repeat(reverse: true);
+          } else {
+            _controller.reset();
+          }
+        },
+        child: Container(
+          height: kDeskButtonHeight,
+          width: kDeskButtonWidth,
+          decoration: BoxDecoration(
+              color: _backgroundAnimation.value,
+              border: Border.symmetric(
+                  horizontal:
+                      BorderSide(color: _borderAnimation1.value, width: 2.0),
+                  vertical:
+                      BorderSide(color: _borderAnimation2.value, width: 2.0))),
+          child: Center(
+            child: ButtonText(
+              text: 'Download CV',
+            ),
           ),
         ),
       ),

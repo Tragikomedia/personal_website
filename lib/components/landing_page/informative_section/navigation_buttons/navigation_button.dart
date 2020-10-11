@@ -34,29 +34,32 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _colorAnimation,
-      builder: (context, child) => InkWell(
-        onTap: (){},
-        onHover: (value) {
-          if (value) {
-            _controller.repeat();
-          } else {
-            _controller.reset();
-          }
-        },
-        child: Card(
-          elevation: 20.0,
-          shadowColor: _colorAnimation.value,
-          color: _colorAnimation.value,
-          child: Container(
-            height: kDeskButtonHeight,
-            width: kDeskButtonWidth,
-            child: Center(
-              child: ButtonText(
-                text: widget.text,
-                color: Colors.white,
-                size: 25.0,
+    return Semantics(
+      button: true,
+      child: AnimatedBuilder(
+        animation: _colorAnimation,
+        builder: (context, child) => InkWell(
+          onTap: (){},
+          onHover: (value) {
+            if (value) {
+              _controller.repeat();
+            } else {
+              _controller.reset();
+            }
+          },
+          child: Card(
+            elevation: 20.0,
+            shadowColor: _colorAnimation.value,
+            color: _colorAnimation.value,
+            child: Container(
+              height: kDeskButtonHeight,
+              width: kDeskButtonWidth,
+              child: Center(
+                child: ButtonText(
+                  text: widget.text,
+                  color: Colors.white,
+                  size: 25.0,
+                ),
               ),
             ),
           ),
