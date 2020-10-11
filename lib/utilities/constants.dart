@@ -1,4 +1,6 @@
 // Desktop
+import 'dart:ui';
+
 const double kMainPagePadding = 25.0;
 const double kMaxMainPageHeight = 820.0;
 const double kMaxMainPageWidth = 1200.0;
@@ -7,6 +9,12 @@ const double kDeskPhotoHeight = 550;
 
 const double kIconSize = 50.0;
 const double kIconSpacing = 20.0;
+
+const double kDeskNameSize = 80;
+
+const Color kDefaultButtonColor = Color(0xFF000000);
+const Color kAnimatedButtonColor1 = Color(0xFF004E92);
+const Color kAnimatedButtonColor2 = Color(0xFF000868);
 
 const int kAnimationDuration = 5;
 const double kTiltDuration = 1;
