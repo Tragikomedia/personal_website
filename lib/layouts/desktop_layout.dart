@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:web_test/utilities/constants.dart';
 
@@ -7,13 +9,14 @@ class DesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
         padding: EdgeInsets.all(kMainPagePadding),
         child: ConstrainedBox(
           constraints: BoxConstraints(
               maxWidth: kMaxMainPageWidth,
-              maxHeight: kMaxMainPageHeight,
+              maxHeight: size.height > kMaxMainPageHeight + 2 * kMainPagePadding ? kMaxMainPageHeight : max(kDeskPhotoHeight + 20, size.height - 2* kMainPagePadding),
           ),
           child: Container(
             width: double.infinity,
@@ -21,9 +24,7 @@ class DesktopLayout extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius:  BorderRadius.circular(10.0)),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-                child: content),
+            child: content,
           ),
         ),
       ),

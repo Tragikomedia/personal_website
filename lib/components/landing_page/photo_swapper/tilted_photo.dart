@@ -25,13 +25,16 @@ class TiltedPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(
-            left: _tiltingPhotoAnimation.value * tiltModifier * 10),
-        child: Transform.rotate(
-            angle: _tiltingPhotoAnimation.value * pi / (16 / tiltModifier),
-            child: Photo(
-              sequenceNumber: sequenceNumber,
-            )));
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+          padding: EdgeInsets.only(
+              left: _tiltingPhotoAnimation.value * tiltModifier * 10),
+          child: Transform.rotate(
+              angle: _tiltingPhotoAnimation.value * pi / (16 / tiltModifier),
+              child: Photo(
+                sequenceNumber: sequenceNumber,
+              ))),
+    );
   }
 }

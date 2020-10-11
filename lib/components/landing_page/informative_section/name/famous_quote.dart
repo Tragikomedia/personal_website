@@ -8,7 +8,8 @@ class FamousQuote extends StatelessWidget {
     height: 50.0,
     child: FadeAnimatedTextKit(
       repeatForever: true,
-      duration: Duration(seconds: 5),
+      alignment: Alignment.centerRight,
+      duration: Duration(seconds: 10),
       textStyle: TextStyle(fontFamily: 'AutourOne', fontSize: 20.0, color: Colors.black45),
       text: ['"Nein, nein, nein"','Lorem Ipsum is simply dummy text of the printing and typesetting industry', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout']),);
   }

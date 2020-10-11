@@ -12,23 +12,25 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient:
-                LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth > 1010) {
-              return DesktopLayout(
-                content: LandingPage(type: LayoutType.desktop,),
-              );
-            } else {
-              return Container(
-                height: 400,
-                color: Colors.red,
-              );
-            }
-          },
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+              gradient:
+                  LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 1010) {
+                return DesktopLayout(
+                  content: LandingPage(type: LayoutType.desktop,),
+                );
+              } else {
+                return Container(
+                  height: 400,
+                  color: Colors.red,
+                );
+              }
+            },
+          ),
         ),
       ),
     );
