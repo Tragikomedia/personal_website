@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:web_test/components/drawer/drawer.dart';
 import 'package:web_test/layouts/desktop_layout.dart';
+import 'package:web_test/layouts/mobile_layout.dart';
 import 'package:web_test/pages/landing_page/landing_page.dart';
 import 'package:web_test/utilities/enums.dart';
 
@@ -9,9 +11,20 @@ class BackgroundLayout extends StatefulWidget {
 }
 
 class _BackgroundLayoutState extends State<BackgroundLayout> {
+  CurrentPage page = CurrentPage.landing;
+
+  _determinePage(LayoutType type) {
+    switch (page){
+      case CurrentPage.landing:
+        return LandingPage(type: type);
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuDrawer(),
       body: Container(
         height: double.infinity,
         decoration: BoxDecoration(
@@ -22,13 +35,10 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
             builder: (context, constraints) {
               if (constraints.maxWidth > 1010) {
                 return DesktopLayout(
-                  content: LandingPage(type: LayoutType.desktop,),
+                  content: _determinePage(LayoutType.desktop),
                 );
               } else {
-                return Container(
-                  height: 400,
-                  color: Colors.red,
-                );
+                return MobileLayout(content: _determinePage(LayoutType.mobile));
               }
             },
           ),
