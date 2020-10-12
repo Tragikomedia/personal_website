@@ -25,8 +25,9 @@ class FrontPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double photoWidth = MediaQuery.of(context).size.width > kDesktopThreshold ? kDeskPhotoWidth : kDeskPhotoWidth / 2;
     return Transform.translate(
-      offset: Offset(-kDeskPhotoWidth * _movingPhotoAnimation.value, 0.0),
+      offset: Offset(-photoWidth * _movingPhotoAnimation.value, 0.0),
       child: ClipRect(
         child: Container(
           child: Align(

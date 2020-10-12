@@ -1,11 +1,15 @@
-// Desktop
 import 'dart:ui';
 
+const double kDesktopThreshold = 1010;
+const double kTabletThreshold = 599;
+
+// Desktop
 const double kMainPagePadding = 25.0;
 const double kMaxMainPageHeight = 820.0;
 const double kMaxMainPageWidth = 1200.0;
 const double kDeskPhotoWidth = 400;
 const double kDeskPhotoHeight = 550;
+const double kPhotoMaxPadding = 20;
 
 const double kIconSize = 50.0;
 const double kIconSpacing = 20.0;

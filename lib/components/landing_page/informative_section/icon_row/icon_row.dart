@@ -7,7 +7,7 @@ class IconRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         LinkIcon(data: iconModels['linkedin'],),
         SizedBox(width: kIconSpacing,),

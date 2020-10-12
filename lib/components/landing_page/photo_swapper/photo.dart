@@ -10,13 +10,14 @@ class Photo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSmall = MediaQuery.of(context).size.width <= kDesktopThreshold;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
             border: Border.all(color: Colors.black, width: 3.0)
       ),
-      width: kDeskPhotoWidth,
-      height: kDeskPhotoHeight,
+      width: !isSmall ? kDeskPhotoWidth : kDeskPhotoWidth / 2,
+      height: !isSmall ? kDeskPhotoHeight : kDeskPhotoHeight / 2,
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: Image(image: AssetImage(imageList[imageNumber]),),

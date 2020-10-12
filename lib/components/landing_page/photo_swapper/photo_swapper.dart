@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:web_test/components/landing_page/photo_swapper/layout_movement_protector.dart';
 import 'package:web_test/components/landing_page/photo_swapper/tilted_photo.dart';
 import 'package:web_test/components/landing_page/photo_swapper/front_photo.dart';
 import 'package:web_test/utilities/constants.dart';
 
 class PhotoSwapper extends StatefulWidget {
+
   @override
   _PhotoSwapperState createState() => _PhotoSwapperState();
 }
@@ -65,11 +67,8 @@ class _PhotoSwapperState extends State<PhotoSwapper>
           controller: _controller,
           sequenceNumber: _sequenceNumber,
         ),
-        // Container is used to prevent the movement of layout caused by padding changes
-        Container(
-          color: Colors.transparent,
-          width: kDeskPhotoWidth + 20,
-        )
+        // LMP is used to prevent the movement of layout caused by padding changes
+        LayoutMovementProtector()
       ]),
     );
   }
