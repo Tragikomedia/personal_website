@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:web_test/components/reusable/language_change_button.dart';
 import 'package:web_test/utilities/constants.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -24,7 +25,8 @@ class DesktopLayout extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius:  BorderRadius.circular(10.0)),
-            child: content,
+            child: Stack(children:
+            [Align(alignment: Alignment.topRight, child: LanguageChangeButton(),),content]),
           ),
         ),
       ),

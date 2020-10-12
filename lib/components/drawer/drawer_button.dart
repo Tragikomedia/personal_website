@@ -11,6 +11,7 @@ class DrawerButton extends StatelessWidget {
     return Container(
       color: Colors.black,
       child: ListTile(
+        leading: Icon(Icons.arrow_right, color: Colors.white,),
         title: ButtonText(
           text: text,
           color: Colors.white,
