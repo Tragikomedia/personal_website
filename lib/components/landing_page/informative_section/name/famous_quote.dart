@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:web_test/utilities/constants.dart';
 
 class FamousQuote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(width: 450,
-    height: 50.0,
+    height: kDeskQuoteSize,
     child: FadeAnimatedTextKit(
       repeatForever: true,
       alignment: Alignment.centerRight,

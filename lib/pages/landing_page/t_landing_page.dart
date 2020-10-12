@@ -13,6 +13,7 @@ class TabletLandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NameWidget(),
@@ -25,14 +26,16 @@ class TabletLandingPage extends StatelessWidget {
                   maxWidth: kDeskPhotoWidth / 2 + kPhotoMaxPadding),
               child: PhotoSwapper()),
         ),
-        NavigationRow(buttons: [
-          NavigationButton(text: 'About Me'),
-          NavigationButton(text: 'Translations'),
-        ]),
-        NavigationRow(buttons: [
-          NavigationButton(text: 'Contact'),
-          NavigationButton(text: 'Programming')
-        ]),
+        ConstrainedBox(constraints: BoxConstraints(minWidth: kDeskButtonHeight * 2), child: Column(
+          children: [NavigationRow(buttons: [
+            NavigationButton(text: 'About Me'),
+            NavigationButton(text: 'Translations'),
+          ]),
+            NavigationRow(buttons: [
+              NavigationButton(text: 'Contact'),
+              NavigationButton(text: 'Programming')
+            ]),],
+        ),),
         CvButton(),
         IconRow()
       ],

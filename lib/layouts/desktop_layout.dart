@@ -23,7 +23,7 @@ class DesktopLayout extends StatelessWidget {
                     ? kMaxMainPageHeight
                     : max(kDeskPhotoHeight + 20,
                         size.height - 2 * kMainPagePadding)
-                : 2000,
+                : kDeskNameSize + kDeskQuoteSize + kDeskPhotoHeight / 2 + kDeskButtonHeight * 3 + kIconSize + 300,
           ),
           child: Container(
             width: double.infinity,

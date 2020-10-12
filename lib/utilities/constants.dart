@@ -14,7 +14,8 @@ const double kPhotoMaxPadding = 20;
 const double kIconSize = 50.0;
 const double kIconSpacing = 20.0;
 
-const double kDeskNameSize = 80;
+const double kDeskNameSize = 80.0;
+const double kDeskQuoteSize = 50.0;
 
 const double kDeskButtonHeight = 75;
 const double kDeskButtonWidth = 250;
