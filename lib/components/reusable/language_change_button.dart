@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_test/utilities/data_sets.dart';
+import 'package:web_test/data_sets/languages.dart';
 import 'package:web_test/utilities/enums.dart';
 import 'package:web_test/models/language.dart';
 
