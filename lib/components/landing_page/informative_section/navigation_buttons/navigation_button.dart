@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:web_test/components/reusable/button_text.dart';
 import 'package:web_test/utilities/constants.dart';
+import 'package:web_test/utilities/enums.dart';
+import 'package:web_test/viewmodels/current_page_viewmodel.dart';
 
 class NavigationButton extends StatefulWidget {
   final String text;
+  final CurrentPage page;
   
-  NavigationButton({@required this.text});
+  NavigationButton({@required this.text, this.page});
 
   @override
   _NavigationButtonState createState() => _NavigationButtonState();
@@ -39,7 +43,9 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
       child: AnimatedBuilder(
         animation: _colorAnimation,
         builder: (context, child) => InkWell(
-          onTap: (){},
+          onTap: (){
+            Provider.of<CurrentPageViewModel>(context, listen:false).newPage = widget.page;
+          },
           onHover: (value) {
             if (value) {
               _controller.repeat();

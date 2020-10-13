@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:web_test/data_sets/languages.dart';
 import 'package:web_test/utilities/enums.dart';
 import 'package:web_test/models/language.dart';
-
 import 'button_text.dart';
 
 class LanguageChangeButton extends StatelessWidget {

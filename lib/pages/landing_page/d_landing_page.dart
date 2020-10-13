@@ -9,6 +9,7 @@ import 'package:web_test/components/landing_page/informative_section/navigation_
 import 'package:web_test/components/landing_page/photo_swapper/photo_swapper.dart';
 import 'package:web_test/components/reusable/white_box_size_keeper.dart';
 import 'package:web_test/utilities/constants.dart';
+import 'package:web_test/utilities/enums.dart';
 
 class DesktopLandingPage extends StatelessWidget {
   @override
@@ -43,7 +44,7 @@ class DesktopLandingPage extends StatelessWidget {
                       child: Column(
                         children: [
                           NavigationRow(buttons: [
-                            NavigationButton(text: 'About Me'),
+                            NavigationButton(text: 'About Me', page: CurrentPage.about,),
                             NavigationButton(text: 'Translations'),
                           ]),
                           NavigationRow(buttons: [
