@@ -31,19 +31,21 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
         decoration: BoxDecoration(
             gradient:
                 LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
-        child: SingleChildScrollView(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > kDesktopThreshold) {
-                return DesktopLayout(
-                  content: _determinePage(LayoutType.desktop),
-                );
-              } else if (constraints.maxWidth > kTabletThreshold) {
-                return DesktopLayout(isSmall: true,content: _determinePage(LayoutType.tablet));
-              } else {
-                return MobileLayout(content: _determinePage(LayoutType.mobile));
-              }
-            },
+        child: Center(
+          child: SingleChildScrollView(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth > kDesktopThreshold) {
+                  return DesktopLayout(
+                    content: _determinePage(LayoutType.desktop),
+                  );
+                } else if (constraints.maxWidth > kTabletThreshold) {
+                  return DesktopLayout(isSmall: true,content: _determinePage(LayoutType.tablet));
+                } else {
+                  return MobileLayout(content: _determinePage(LayoutType.mobile));
+                }
+              },
+            ),
           ),
         ),
       ),

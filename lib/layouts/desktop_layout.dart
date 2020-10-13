@@ -18,6 +18,7 @@ class DesktopLayout extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: kMaxMainPageWidth,
+              // TODO Fix this somehow
             maxHeight: !isSmall
                 ? size.height > kMaxMainPageHeight + 2 * kMainPagePadding
                     ? kMaxMainPageHeight
