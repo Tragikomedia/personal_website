@@ -29,7 +29,10 @@ const double kWaitForTiltDuration = 1;
 const double kFrontTranslateDuration = 1;
 const double kFrontHideDuration = 1;
 
-const int kAboutPageAnimationDuration = 3;
+const int kAboutPageAnimationDuration = 1500;
+const double kAboutButtonHeight = 100;
+const double kAboutButtonSpacing = 5;
+const double kAboutExplanationBoxWidth = 500;
 
 const List<Color> kBackgroundColors = [Color(0xFF00B4DB),  Color(0xFF0083B0)];
 const List<String> imageList = ['assets/photo1.jpg', 'assets/photo2.jpg', 'assets/photo3.jpg'];

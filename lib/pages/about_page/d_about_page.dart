@@ -12,9 +12,13 @@ class _DesktopAboutPageState extends State<DesktopAboutPage> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Align(alignment: Alignment.topCenter,child: AboutHeader()),
+          Spacer(),
           Align(alignment: Alignment.centerLeft,child: InfoSection()),
+          Spacer()
         ],
       ),
     );
