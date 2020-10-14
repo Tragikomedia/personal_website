@@ -17,10 +17,6 @@ class BackgroundLayout extends StatefulWidget {
 
 class _BackgroundLayoutState extends State<BackgroundLayout> {
 
-  _determinePage(PageModel page, LayoutType type) {
-    return ResponsivePageHandler(page: page, type: type);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +25,7 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
         height: double.infinity,
         decoration: BoxDecoration(
             gradient:
-                LinearGradient(colors: [Color(0xFF000428), Color(0xFF004e92)])),
+                LinearGradient(colors: kBackgroundColors + kBackgroundColors.reversed.toList())),
         child: Center(
           child: SingleChildScrollView(
             child: Consumer<CurrentPageViewModel>(
@@ -38,12 +34,12 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
                 builder: (context, constraints) {
                   if (constraints.maxWidth > kDesktopThreshold) {
                     return DesktopLayout(
-                      content: _determinePage(pages[currentPage.currentPage], LayoutType.desktop),
+                      content: ResponsivePageHandler(page: pages[currentPage.currentPage], type: LayoutType.desktop),
                     );
                   } else if (constraints.maxWidth > kTabletThreshold) {
-                    return DesktopLayout(isSmall: true,content: _determinePage(pages[currentPage.currentPage], LayoutType.tablet));
+                    return DesktopLayout(isSmall: true,content: ResponsivePageHandler(page: pages[currentPage.currentPage], type: LayoutType.tablet));
                   } else {
-                    return MobileLayout(content: _determinePage(pages[currentPage.currentPage], LayoutType.mobile));
+                    return MobileLayout(content: ResponsivePageHandler(page: pages[currentPage.currentPage], type: LayoutType.mobile));
                   }
                 },
               ),

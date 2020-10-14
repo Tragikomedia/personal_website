@@ -23,7 +23,7 @@ class _CvButtonState extends State<CvButton>
             setState(() {});
           });
     _backgroundAnimation =
-        ColorTween(begin: Colors.transparent, end: Color(0xFFCDE9F1))
+        ColorTween(begin: Colors.white, end: kAnimatedButtonColor1)
             .animate(_controller);
     _borderAnimation1 = ColorTween(begin: Colors.black, end: Colors.transparent)
         .animate(_controller);

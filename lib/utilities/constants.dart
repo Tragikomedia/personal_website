@@ -21,8 +21,7 @@ const double kDeskButtonHeight = 75;
 const double kDeskButtonWidth = 250;
 
 const Color kDefaultButtonColor = Color(0xFF000000);
-const Color kAnimatedButtonColor1 = Color(0xFF004E92);
-const Color kAnimatedButtonColor2 = Color(0xFF000868);
+const Color kAnimatedButtonColor1 = Color(0xFF0083B0);
 
 const int kAnimationDuration = 5;
 const double kTiltDuration = 1;
@@ -30,5 +29,8 @@ const double kWaitForTiltDuration = 1;
 const double kFrontTranslateDuration = 1;
 const double kFrontHideDuration = 1;
 
+const int kAboutPageAnimationDuration = 3;
+
+const List<Color> kBackgroundColors = [Color(0xFF00B4DB),  Color(0xFF0083B0)];
 const List<String> imageList = ['assets/photo1.jpg', 'assets/photo2.jpg', 'assets/photo3.jpg'];
 

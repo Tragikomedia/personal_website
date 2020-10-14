@@ -24,8 +24,7 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
     _controller = AnimationController(vsync: this, duration: Duration(seconds: 3),);
     _colorAnimation = TweenSequence([
       TweenSequenceItem(tween: ColorTween(begin: kDefaultButtonColor, end: kAnimatedButtonColor1), weight: 1),
-      TweenSequenceItem(tween: ColorTween(begin: kAnimatedButtonColor1, end: kAnimatedButtonColor2), weight: 1),
-      TweenSequenceItem(tween: ColorTween(begin: kAnimatedButtonColor2, end: kDefaultButtonColor), weight: 1),
+      TweenSequenceItem(tween: ColorTween(begin: kAnimatedButtonColor1, end: kDefaultButtonColor), weight: 1),
     ]).animate(_controller);
     super.initState();
   }
