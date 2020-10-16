@@ -1,18 +1,25 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:web_test/components/about_page/info_section/inverted_content.dart';
 import 'package:web_test/components/reusable/button_text.dart';
 import 'package:web_test/utilities/constants.dart';
+import 'package:web_test/utilities/controller_manager.dart';
 
 class InfoBox extends StatefulWidget {
   final String title;
   final String text;
+  final double verticalOffset;
   final AnimationController controller;
-  final Animation<double> translateAnimation;
+  final Animation<double> horizontalTranslateAnimation;
+  final Animation<double> verticalTranslateAnimation;
   final Animation<double> matrixAnimation;
 
   InfoBox(
-      {@required this.title, @required this.text, @required this.controller})
-      : translateAnimation = Tween(begin: 0.0, end: 600.0).animate(controller),
+      {@required this.title, @required this.text, @required this.controller, this.verticalOffset})
+      : horizontalTranslateAnimation = Tween(begin: 0.0, end: 600.0).animate(controller),
+        verticalTranslateAnimation = Tween(begin: 0.0, end: verticalOffset).animate(controller),
         matrixAnimation = Tween(begin: 0.0, end: 1.0).animate(controller);
 
   @override
@@ -21,7 +28,6 @@ class InfoBox extends StatefulWidget {
 
 class _InfoBoxState extends State<InfoBox> {
   bool showText = false;
-  double x = 3;
 
   @override
   void initState() {
@@ -40,14 +46,10 @@ class _InfoBoxState extends State<InfoBox> {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: Offset(widget.translateAnimation.value, 0.0),
+      offset: Offset(widget.horizontalTranslateAnimation.value, widget.verticalTranslateAnimation.value),
       child: InkWell(
         onTap: () {
-          if (widget.controller.status == AnimationStatus.dismissed) {
-            widget.controller.forward();
-          } else {
-            widget.controller.reverse();
-          }
+          Provider.of<InfoBoxControllerManager>(context, listen: false).showInfoBox(widget.controller);
         },
         child: Transform(
           transform: Matrix4(
@@ -68,12 +70,12 @@ class _InfoBoxState extends State<InfoBox> {
             0,
             1,
           )
-            ..rotateX(x*widget.matrixAnimation.value),
+            ..setEntry(3, 2, 0.005)..rotateX(pi * widget.controller.value),
           child: Card(
             color: !showText ? Colors.black : Colors.white,
             child: !showText
                 ? Container(
-                    width: 400,
+                    width: kAboutExplanationBoxWidth - 100,
                     height: kAboutButtonHeight,
                     child: Center(
                       child: ButtonText(
@@ -82,9 +84,9 @@ class _InfoBoxState extends State<InfoBox> {
                       ),
                     ))
                 : Container(
-              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+              decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 3)),
                     width: kAboutExplanationBoxWidth,
-                    height: 200,
+                    height: 4 * (kAboutButtonHeight+0.5*kAboutButtonSpacing),
                     child: InvertedContent(content: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(widget.text, style: TextStyle(color: Colors.red),),

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:web_test/components/reusable/button_text.dart';
 import 'package:web_test/utilities/constants.dart';
 import 'package:web_test/utilities/enums.dart';
-import 'package:web_test/viewmodels/current_page_viewmodel.dart';
+import 'package:web_test/notifiers/current_page_notifier.dart';
 
 class NavigationButton extends StatefulWidget {
   final String text;
@@ -43,7 +43,7 @@ class _NavigationButtonState extends State<NavigationButton> with SingleTickerPr
         animation: _colorAnimation,
         builder: (context, child) => InkWell(
           onTap: (){
-            Provider.of<CurrentPageViewModel>(context, listen:false).newPage = widget.page;
+            Provider.of<CurrentPageNotifier>(context, listen:false).newPage = widget.page;
           },
           onHover: (value) {
             if (value) {

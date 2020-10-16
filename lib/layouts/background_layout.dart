@@ -4,11 +4,10 @@ import 'package:web_test/components/drawer/drawer.dart';
 import 'package:web_test/data_sets/pages.dart';
 import 'package:web_test/layouts/desktop_layout.dart';
 import 'package:web_test/layouts/mobile_layout.dart';
-import 'package:web_test/models/pageModel.dart';
 import 'package:web_test/pages/responsive_handler/responsive_handler.dart';
 import 'package:web_test/utilities/constants.dart';
 import 'package:web_test/utilities/enums.dart';
-import 'package:web_test/viewmodels/current_page_viewmodel.dart';
+import 'package:web_test/notifiers/current_page_notifier.dart';
 
 class BackgroundLayout extends StatefulWidget {
   @override
@@ -28,7 +27,7 @@ class _BackgroundLayoutState extends State<BackgroundLayout> {
                 LinearGradient(colors: kBackgroundColors + kBackgroundColors.reversed.toList())),
         child: Center(
           child: SingleChildScrollView(
-            child: Consumer<CurrentPageViewModel>(
+            child: Consumer<CurrentPageNotifier>(
               builder: (context, currentPage, child) =>
                LayoutBuilder(
                 builder: (context, constraints) {

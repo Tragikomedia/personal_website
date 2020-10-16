@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web_test/layouts/background_layout.dart';
-import 'package:web_test/viewmodels/current_page_viewmodel.dart';
+import 'package:web_test/notifiers/current_page_notifier.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Webpage',
       home: ChangeNotifierProvider(
-          create: (context) => CurrentPageViewModel(),
+          create: (context) => CurrentPageNotifier(),
           child: BackgroundLayout()),
     );
   }
