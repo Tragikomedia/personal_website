@@ -10,7 +10,7 @@ class WhiteBoxSizeKeeper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: min(MediaQuery.of(context).size.height - 2 * kMainPagePadding,
+      height: min(MediaQuery.of(context).size.height - 2 * kPagePadding,
           kMaxMainPageHeight),
       width: 1,
     );

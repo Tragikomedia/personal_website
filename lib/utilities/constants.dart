@@ -4,7 +4,7 @@ const double kDesktopThreshold = 1010;
 const double kTabletThreshold = 599;
 
 // Desktop
-const double kMainPagePadding = 25.0;
+const double kPagePadding = 25.0;
 const double kMaxMainPageHeight = 820.0;
 const double kMaxMainPageWidth = 1200.0;
 const double kDeskPhotoWidth = 400;
@@ -33,6 +33,7 @@ const int kAboutPageAnimationDuration = 1500;
 const double kAboutButtonHeight = 100;
 const double kAboutButtonSpacing = 5;
 const double kAboutExplanationBoxWidth = 500;
+const double kAboutPadding = 20.0;
 
 const List<Color> kBackgroundColors = [Color(0xFF00B4DB),  Color(0xFF0083B0)];
 const List<String> imageList = ['assets/photo1.jpg', 'assets/photo2.jpg', 'assets/photo3.jpg'];

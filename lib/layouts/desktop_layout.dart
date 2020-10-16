@@ -14,16 +14,16 @@ class DesktopLayout extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(kMainPagePadding),
+        padding: EdgeInsets.all(kPagePadding),
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: kMaxMainPageWidth,
               // TODO Fix this somehow
             maxHeight: !isSmall
-                ? size.height > kMaxMainPageHeight + 2 * kMainPagePadding
+                ? size.height > kMaxMainPageHeight + 2 * kPagePadding
                     ? kMaxMainPageHeight
                     : max(kDeskPhotoHeight + 20,
-                        size.height - 2 * kMainPagePadding)
+                        size.height - 2 * kPagePadding)
                 : kDeskNameSize + kDeskQuoteSize + kDeskPhotoHeight / 2 + kDeskButtonHeight * 3 + kIconSize + 300,
           ),
           child: Container(

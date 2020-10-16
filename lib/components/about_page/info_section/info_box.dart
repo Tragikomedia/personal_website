@@ -11,14 +11,15 @@ class InfoBox extends StatefulWidget {
   final String title;
   final String text;
   final double verticalOffset;
+  final double horizontalOffset;
   final AnimationController controller;
   final Animation<double> horizontalTranslateAnimation;
   final Animation<double> verticalTranslateAnimation;
   final Animation<double> matrixAnimation;
 
   InfoBox(
-      {@required this.title, @required this.text, @required this.controller, this.verticalOffset})
-      : horizontalTranslateAnimation = Tween(begin: 0.0, end: 600.0).animate(controller),
+      {@required this.title, @required this.text, @required this.controller, this.horizontalOffset, this.verticalOffset})
+      : horizontalTranslateAnimation = Tween(begin: 0.0, end: horizontalOffset).animate(controller),
         verticalTranslateAnimation = Tween(begin: 0.0, end: verticalOffset).animate(controller),
         matrixAnimation = Tween(begin: 0.0, end: 1.0).animate(controller);
 
